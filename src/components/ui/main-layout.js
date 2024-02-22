@@ -9,9 +9,7 @@ export function MainLayout ({children}) {
         <>
             <main className="sm:container mx-auto">
                 <div className="flex justify-between m-10">
-                    <Header
-                        title={`pageTitle`}
-                    />
+                    <Header/>
                     <Navigation
                         navigation={pageNavigation}
                     />

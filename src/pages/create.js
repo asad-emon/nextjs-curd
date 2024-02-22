@@ -15,28 +15,21 @@ const reducer = (state, action) => {
 
 export default function Create() {
 
-  const initialState = { 
-    label:'', 
-    type:'', 
-    name:'', 
-    required: false, 
-    placeholder:''
-  }
 
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, {});
   
   const formData = [
-    { label:'Name', type:'text', name:'name', required: false, placeholder:'John', value:state.name },
-    { label:'Profile picture', type:'file', name:'profile_picture', required: true, placeholder:'', value:state.profile_picture },
-    { label:'Phone number', type:'tel', name:'phone_number', required: false, placeholder:'0088', value:state.phone_number },
-    { label:'Description', type:'text', name:'description', required: true, placeholder:'My name is John', value:state.description },
-    { label:'Birth date', type:'date', name:'birthdate', required: true, placeholder:'2000-0-0', value:state.birthdate },
-    { label:'Active status', type:'checkbox', name:'active_status', required: false, placeholder:'', value:state.active_status },
+    { label:'Name', type:'text', name:'username', required: false, placeholder:'John', value:state.username??'' },
+    { label:'Profile picture', type:'file', name:'profile_picture', required: true, placeholder:'', value:state.profile_picture??'' },
+    { label:'Phone number', type:'tel', name:'phone_number', required: false, placeholder:'0088', value:state.phone_number??'' },
+    { label:'Description', type:'text', name:'description', required: true, placeholder:'My name is John', value:state.description??'' },
+    { label:'Birth date', type:'date', name:'birthdate', required: true, placeholder:'2000-0-0', value:state.birthdate??'' },
+    { label:'Active status', type:'checkbox', name:'active_status', required: false, placeholder:'', value:state.active_status??'' },
 ]
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    dispatch({ type: 'INPUT_CHANGE', fieldName: name, payload: value });
+    dispatch({ type: 'INPUT_CHANGE', fieldName: name, payload: (e.target.type=='checkbox') ? e.target.checked : value });
   };
 
   const handleSubmit = (e) => {

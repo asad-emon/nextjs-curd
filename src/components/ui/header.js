@@ -1,4 +1,3 @@
-import Link from "next/link"
 export function Header({ title }) {
     return (
         <>
@@ -10,3 +9,7 @@ export function Header({ title }) {
         </>
     )
 }
+
+Header.defaultProps = {
+    title: "Next.js CURD Application",
+  };
