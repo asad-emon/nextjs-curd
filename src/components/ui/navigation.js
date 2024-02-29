@@ -1,20 +1,24 @@
 import Link from "next/link"
-export function Navigation({navigation}) {
+import { useRouter } from 'next/router'
+export function Navigation() {
+    const router = useRouter();
     return (
         <>
             <nav>
-                <ul>
-                    <li>
-                        <button 
-                            role="button"
-                            className="inline-flex justify-center items-center py-3 px-5 sm:ms-4 text-base font-medium text-center text-gray-900 rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
+                <ul className="flex flex-row font-bold mt-0 space-x-8 rtl:space-x-reverse text-sm">
+                    <li className={`text-gray-900 dark:text-white hover:text-blue-500 ${router.pathname == '/' && 'text-indigo-600'}`}>
+                        <Link
+                            href="/"
                         >
-                            <Link
-                                href={navigation.url}
-                            >
-                                {navigation.text}
-                            </Link>
-                        </button>
+                            Home
+                        </Link>
+                    </li>
+                    <li className={`text-gray-900 dark:text-white hover:text-blue-500 ${router.pathname == '/create' && 'text-indigo-600'}`}>
+                        <Link
+                            href="/create"
+                        >
+                            Create user
+                        </Link>
                     </li>
                 </ul>
             </nav>

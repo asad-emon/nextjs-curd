@@ -1,20 +1,16 @@
 import { Header } from "./header"
 import { Navigation } from "./navigation"
 export function MainLayout ({children}) {
-    const pageNavigation = {
-        url : `/create`,
-        text : `Create New User`
-    }
     return (
         <>
-            <main className="sm:container mx-auto">
-                <div className="flex justify-between m-10">
+            <main>
+                <div className="bg-gray-50 dark:bg-gray-700 flex justify-between lg:px-36 px-10 py-5">
                     <Header/>
-                    <Navigation
-                        navigation={pageNavigation}
-                    />
+                    <Navigation/>
                 </div>
-                {children}
+                <div className="sm:container mx-auto mt-10">
+                    {children}
+                </div>
             </main>
         </>
     )

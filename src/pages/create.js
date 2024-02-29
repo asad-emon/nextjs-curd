@@ -14,17 +14,24 @@ const reducer = (state, action) => {
 };
 
 export default function Create() {
+  const initialValue = {
+    username: '',
+    profile_picture: '',
+    phone_number: '',
+    description: '',
+    birthdate: '',
+    active_status: ''
+  }
 
-
-  const [state, dispatch] = useReducer(reducer, {});
+  const [state, dispatch] = useReducer(reducer, initialValue);
   
   const formData = [
-    { label:'Name', type:'text', name:'username', required: false, placeholder:'John', value:state.username??'' },
-    { label:'Profile picture', type:'file', name:'profile_picture', required: true, placeholder:'', value:state.profile_picture??'' },
-    { label:'Phone number', type:'tel', name:'phone_number', required: false, placeholder:'0088', value:state.phone_number??'' },
-    { label:'Description', type:'text', name:'description', required: true, placeholder:'My name is John', value:state.description??'' },
-    { label:'Birth date', type:'date', name:'birthdate', required: true, placeholder:'2000-0-0', value:state.birthdate??'' },
-    { label:'Active status', type:'checkbox', name:'active_status', required: false, placeholder:'', value:state.active_status??'' },
+    { label:'Name', type:'text', name:'username', required: false, placeholder:'John'},
+    { label:'Profile picture', type:'file', name:'profile_picture', required: true, placeholder:''},
+    { label:'Phone number', type:'tel', name:'phone_number', required: false, placeholder:'0088'},
+    { label:'Description', type:'text', name:'description', required: true, placeholder:'My name is John'},
+    { label:'Birth date', type:'date', name:'birthdate', required: true, placeholder:'2000-0-0'},
+    { label:'Active status', type:'checkbox', name:'active_status', required: false, placeholder:''}
 ]
 
   const handleInputChange = (e) => {
@@ -49,7 +56,7 @@ export default function Create() {
             label={field.label}
             type={field.type}
             name={field.name}
-            value={field.value}
+            value={state[field.name]}
             placeholder={field.placeholder}
             required={field.required}
             onChange={handleInputChange}
