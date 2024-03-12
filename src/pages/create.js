@@ -29,12 +29,14 @@ export default function Create() {
     { label:'Name', type:'text', name:'username', required: false, placeholder:'John'},
     { label:'Profile picture', type:'file', name:'profile_picture', required: true, placeholder:''},
     { label:'Phone number', type:'tel', name:'phone_number', required: false, placeholder:'0088'},
-    { label:'Description', type:'text', name:'description', required: true, placeholder:'My name is John'},
+    { label:'Description', type:'richtext', name:'description', required: true, placeholder:'My name is John'},
     { label:'Birth date', type:'date', name:'birthdate', required: true, placeholder:'2000-0-0'},
     { label:'Active status', type:'checkbox', name:'active_status', required: false, placeholder:''}
 ]
 
   const handleInputChange = (e) => {
+    // console.log(e);
+    // return
     const { name, value } = e.target;
     dispatch({ type: 'INPUT_CHANGE', fieldName: name, payload: (e.target.type=='checkbox') ? e.target.checked : value });
   };

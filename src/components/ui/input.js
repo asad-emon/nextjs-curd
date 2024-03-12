@@ -1,4 +1,13 @@
-export function Input({ label, type, name, required, placeholder, value , onChange}) {
+import React from 'react';
+import {useDropzone} from 'react-dropzone';
+
+export function Input({ label, type, name, required, placeholder, value, onChange}) {
+    const {acceptedFiles, getRootProps, getInputProps} = useDropzone();
+    const files = acceptedFiles.map(file => (
+        <li key={file.path}>
+          {file.path} - {file.size} bytes
+        </li>
+      ));
     const snakeToCamel = str => str.toLowerCase().replace(/(_\w)/g, m => m.toUpperCase().substr(1));
     return (
         <>
@@ -19,6 +28,18 @@ export function Input({ label, type, name, required, placeholder, value , onChan
                         <label htmlFor={snakeToCamel(name)} className="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">{label}</label>
                     </div>
                 </div>
+            ) : type === 'file'? (    
+                    <section className="container">
+                        <aside className="mb-2">
+                            <label className="text-sm font-medium text-gray-900 dark:text-gray-300">Profile picture</label>
+                        </aside>
+                        <div {...getRootProps({className: 'dropzone'})}>
+                            <input {...getInputProps()} />
+                            {files.length < 1 ? (<p className='text-center'>Drag 'n' drop some files here, or click to select files</p>) : (<ul>{files}</ul>)}
+                        </div>
+                    </section>
+            ) : type === 'richtext'? (
+                null
             ) : (
                 <div>
                     <label htmlFor={snakeToCamel(name)} className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{label}</label>
