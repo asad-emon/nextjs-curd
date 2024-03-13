@@ -52,3 +52,7 @@ body {
   outline: none;
   transition: border .24s ease-in-out;
 }
+
+.ck-content{
+  min-height: 260px;
+}

@@ -1,7 +1,15 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {useDropzone} from 'react-dropzone';
+import DatePicker from "react-datepicker";
+import CKeditor from '../plugin/ckeditor';
+import 'react-datepicker/dist/react-datepicker.css';
 
 export function Input({ label, type, name, required, placeholder, value, onChange}) {
+    const [ckEditorLoaded, setCkEditorLoaded] = useState(false);
+    useEffect(() => {
+        setCkEditorLoaded(true);
+    }, []);
+
     const {acceptedFiles, getRootProps, getInputProps} = useDropzone();
     const files = acceptedFiles.map(file => (
         <li key={file.path}>
@@ -31,7 +39,7 @@ export function Input({ label, type, name, required, placeholder, value, onChang
             ) : type === 'file'? (    
                     <section className="container">
                         <aside className="mb-2">
-                            <label className="text-sm font-medium text-gray-900 dark:text-gray-300">Profile picture</label>
+                        <label htmlFor={snakeToCamel(name)} className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{label}</label>
                         </aside>
                         <div {...getRootProps({className: 'dropzone'})}>
                             <input {...getInputProps()} />
@@ -39,7 +47,30 @@ export function Input({ label, type, name, required, placeholder, value, onChang
                         </div>
                     </section>
             ) : type === 'richtext'? (
-                null
+                    <div className="h-100">
+                        <label htmlFor={snakeToCamel(name)} className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{label}</label>
+                        <CKeditor
+                            name="description"
+                            onChange={(data) => {
+                                let event = { target: { name: name, value: data } }
+                                return onChange(event)
+                            }}
+                            editorLoaded={ckEditorLoaded}
+                        />
+                    </div>
+            ) : type === 'date'? (
+                    <div>
+                        <label htmlFor={snakeToCamel(name)} className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{label}</label>
+                        <DatePicker 
+                            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" 
+                            placeholderText="Click to select a date" 
+                            selected={value} 
+                            onChange={(date) => {
+                                let event = { target: { name: name, value: date } }
+                                return onChange(event)
+                            }}
+                        />
+                    </div>
             ) : (
                 <div>
                     <label htmlFor={snakeToCamel(name)} className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{label}</label>
