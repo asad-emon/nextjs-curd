@@ -1,0 +1,26 @@
+[
+    {
+      "id": 1,
+      "username": "John",
+      "description": "I am a programer",
+      "phoneNumber": "1234567890",
+      "birthdate": "2000-01-01",
+      "activeStatus": true
+    },
+    {
+      "id": 2,
+      "username": "Paul",
+      "description": "I am a designer",
+      "phoneNumber": "1234567890",
+      "birthdate": "2000-01-01",
+      "activeStatus": false
+    },
+    {
+      "id": 3,
+      "username": "Lisa",
+      "description": "I am a photographer",
+      "phoneNumber": "1234567890",
+      "birthdate": "2000-01-01",
+      "activeStatus": true
+    }
+]

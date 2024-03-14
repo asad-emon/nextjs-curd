@@ -1,21 +1,8 @@
 import { Input } from "@/components/ui/input";
-import { useReducer } from "react";
+import { useFormContext } from "@/contexts/form-context";
 
-const reducer = (state, action) => {
-    switch (action.type) {
-      case 'INPUT_CHANGE':
-        return { ...state, [action.fieldName]: action.payload };
-      default:
-        return state;
-    }
-};
 export function Form({ children, title, formFields, handleFormSubmit }) {
-    let initialValue = {}
-    formFields.forEach(element => {
-        initialValue[element.name] = ''        
-    });
-
-    const [state, dispatch] = useReducer(reducer, initialValue);
+    const [state, dispatch] = useFormContext();
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
