@@ -55,6 +55,7 @@ export function Input({ label, type, name, required, placeholder, value, onChang
                         <label htmlFor={name} className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{label}</label>
                         <CKeditor
                             name="description"
+                            value={value}
                             onChange={(data) => {
                                 let event = { target: { name: name, value: data } }
                                 return onChange(event)
@@ -69,7 +70,7 @@ export function Input({ label, type, name, required, placeholder, value, onChang
                             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" 
                             dateFormat="yyyy/MM/dd"
                             placeholderText="Click to select a date" 
-                            selected={new Date(value)} 
+                            selected={!!value ? new Date(value) : null}
                             onChange={handleDateChange}
                         />
                     </div>

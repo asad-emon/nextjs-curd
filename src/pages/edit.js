@@ -11,7 +11,7 @@ export default function Edit() {
 
     const userData = useMemo(() => {
         return users.find((user) => user.id == router.query.id); // call api
-    }, [router.query.id]);
+    }, [router]);
 
     setInitialState(formFields, userData);
 

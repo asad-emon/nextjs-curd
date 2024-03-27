@@ -1,6 +1,6 @@
 export const initialState = {}
 
-export const setInitialState = (formFields, values = []) => {
+export const setInitialState = (formFields, values = {}) => {
     formFields.forEach(field => {
         initialState[field.name] = values[field.name] ?? "";
     });
