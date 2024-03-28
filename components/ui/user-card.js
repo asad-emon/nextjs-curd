@@ -28,7 +28,7 @@ export function UserCard ({user}) {
                     </div>
                     <div className="mt-4 flex items-center justify-between">
                         <p className="text-sm font-medium text-gray-500">Status: <span className={user.activeStatus?`text-green-600`:`text-red-600`}>{user.activeStatus?'Active':'Inactive'}</span></p>
-                        <Link href={`/edit?id=${user.id}`} className="font-medium text-indigo-600 hover:text-indigo-500">Edit</Link>
+                        <Link href={`/edit/${user.id}`} className="font-medium text-indigo-600 hover:text-indigo-500">Edit</Link>
                     </div>
                 </div>
             </li>

@@ -1,18 +1,17 @@
-import { MainLayout } from "@/components/ui/main-layout";
+"use client"
 import { Form } from "@/components/ui/form";
 import { setInitialState } from "@/reducers/form";
 import { editFormFields as formFields } from "@/constants/form-fields";
-import { useRouter } from 'next/router'
+import { useParams } from 'next/navigation'
 import users from "@/constants/users.json";
 import { useMemo } from "react";
 
 export default function Edit() {
-    const router = useRouter()
-
+    const params = useParams();
     const userData = useMemo(() => {
-        return users.find((user) => user.id == router.query.id); // call api
-    }, [router]);
-
+        return users.find((user) => user.id == params.id); // call api
+    }, [params]);
+    
     setInitialState(formFields, userData);
 
     const handleFormSubmit = (e) => {
@@ -20,13 +19,11 @@ export default function Edit() {
     };
 
     return (
-        <MainLayout>
-            <Form
-                formFields={formFields}
-                title={`Edit user`}
-                handleFormSubmit={handleFormSubmit}
-            >
-            </Form>
-        </MainLayout>
+        <Form
+            formFields={formFields}
+            title={`Edit user`}
+            handleFormSubmit={handleFormSubmit}
+        >
+        </Form>
     );
 }

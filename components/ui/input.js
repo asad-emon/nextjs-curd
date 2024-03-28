@@ -1,3 +1,4 @@
+"use client"
 import React, {useState, useEffect} from 'react';
 import {useDropzone} from 'react-dropzone';
 import DatePicker from "react-datepicker";
@@ -43,7 +44,7 @@ export function Input({ label, type, name, required, placeholder, value, onChang
             ) : type === 'file'? (    
                     <section className="container">
                         <aside className="mb-2">
-                        <label htmlFor={name} className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{label}</label>
+                        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{label}</label>
                         </aside>
                         <div {...getRootProps({className: 'dropzone'})}>
                             <input {...getInputProps()} />
@@ -52,7 +53,7 @@ export function Input({ label, type, name, required, placeholder, value, onChang
                     </section>
             ) : type === 'richtext'? (
                     <div className="h-100">
-                        <label htmlFor={name} className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{label}</label>
+                        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{label}</label>
                         <CKeditor
                             name="description"
                             value={value}
@@ -65,7 +66,7 @@ export function Input({ label, type, name, required, placeholder, value, onChang
                     </div>
             ) : type === 'date'? (
                     <div>
-                        <label htmlFor={name} className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{label}</label>
+                        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{label}</label>
                         <DatePicker 
                             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" 
                             dateFormat="yyyy/MM/dd"
