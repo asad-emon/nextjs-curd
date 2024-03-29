@@ -8,7 +8,7 @@ export function MainLayout ({children}) {
                 <Header/>
                 <Navigation/>
             </div>
-            <div className="sm:container m-10">
+            <div className="m-10">
                 {children}
             </div>
         </main>
