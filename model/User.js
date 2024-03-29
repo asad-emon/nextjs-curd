@@ -1,4 +1,4 @@
-import mongoose, {Schema} from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
 
 const dataObject = {
     username: String,
@@ -7,9 +7,9 @@ const dataObject = {
     birthdate: Date,
     description: String,
     activeStatus: Boolean
-}
+};
 
 const userSchema = new Schema(dataObject, { timestamps: true });
-const User = mongoose.model.User ?? mongoose.model('User', userSchema);
+const User = mongoose.models.User ?? mongoose.model('User', userSchema);
 
 export default User;
