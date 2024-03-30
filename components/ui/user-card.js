@@ -3,16 +3,17 @@ import Link from "next/link"
 import { dateToYMD } from "@/lib/helper"
 
 export function UserCard ({user}) {
+    const profilePicture = user.profilePicture??"/images/avatar.jpg"
     return (
-            <li className="shadow rounded-md border border-gray-200 dark:border-gray-800 m-10 relative">
+            <li className="shadow rounded-md border max-w-lg w-3/4 mx-auto border-gray-200 dark:border-gray-800 m-10 relative">
                 {user.phoneNumber && (
                     <div className="absolute right-0 top-0">
-                        <span className="bg-blue-100 text-blue-800 text-sm font-medium px-2.5 py-1 rounded-bl-lg">tel: {user.phoneNumber}</span>
+                        <span className="bg-blue-100 text-blue-800 dark:bg-blue-800 dark:text-blue-100 text-sm font-medium px-2.5 py-1 rounded-bl-lg">tel: {user.phoneNumber}</span>
                     </div>
                 )}
                 <div className="image-container absolute translate-x-[-50%] translate-y-[-50%]">
                     <Image
-                        src={user.profilePicture??"/images/avatar.jpg"}
+                        src={profilePicture}
                         width={500}
                         height={500}
                         alt={user.username??'User'}

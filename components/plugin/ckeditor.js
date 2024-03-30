@@ -13,7 +13,6 @@ useEffect(() => {
             {editorLoaded ? (
                 <div>
                     <CKEditor
-                        type=""
                         name={name}
                         editor={ClassicEditor}
                         data={value}

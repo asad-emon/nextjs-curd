@@ -18,7 +18,7 @@ export async function POST(request) {
     try {
         await dbConnection();
         const users = await User.find();
-        return NextResponse.json({ data : users });
+        return NextResponse.json({ users });
     }
     catch(ex) {
         return NextResponse.json({ error: ex });

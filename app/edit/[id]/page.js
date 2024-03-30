@@ -1,6 +1,6 @@
 "use client"
 import { Form } from "@/components/ui/form";
-import { setInitialState } from "@/reducers/form";
+import { setInitialState } from "@/reducers/form-reducer";
 import { editFormFields as formFields } from "@/constants/form-fields";
 import { useParams } from 'next/navigation'
 import users from "@/constants/users.json";

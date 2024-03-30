@@ -1,14 +1,16 @@
 "use client"
 import { Form } from "@/components/ui/form";
-import { setInitialState } from "@/reducers/form";
+import { setInitialState } from "@/reducers/form-reducer";
 import { createFormFields as formFields } from "@/constants/form-fields";
+import api from '@/lib/api-client';
 
 export default function Create() {
 
   setInitialState(formFields);
 
-  const handleFormSubmit = (e) => {
-    console.log(e)
+  const handleFormSubmit = async (e) => {
+    const response = await api.postUser(e);
+    console.log(response)
   };
 
   return (

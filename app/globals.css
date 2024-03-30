@@ -26,6 +26,7 @@ body {
 }
 
 .image-container {
+  background-color: lightgray;
   display: flex;
   width: 64px;
   height: 64px;
