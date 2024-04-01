@@ -20,9 +20,9 @@ export async function GET(request, { params }) {
         const { id } = params;
         await dbConnection();
         const user = await User.findById(id);
-        return NextResponse.json({ data : user });
+        return NextResponse.json({ status:"ok", message:"User found!", data: user });
     }
     catch(ex) {
-        return NextResponse.json({ error: ex });
+        return NextResponse.json({ error: ex, message:"User not found!" });
     }
 }
