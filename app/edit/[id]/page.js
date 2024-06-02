@@ -2,15 +2,18 @@
 import { Form } from "@/components/ui/form";
 import { setInitialState } from "@/reducers/form-reducer";
 import { editFormFields as formFields } from "@/constants/form-fields";
-import { useParams } from 'next/navigation'
-import users from "@/constants/users.json";
+import api from '@/lib/api-client';
 import { useMemo } from "react";
 
-export default function Edit() {
-    const params = useParams();
-    const userData = useMemo(() => {
-        return users.find((user) => user.id == params.id); // call api
-    }, [params]);
+
+export default function Edit({ params: { id } }) {
+    const userData = useMemo(async()=>{
+        const response = await api.getUserById(id);
+        if(response.status == "ok") {
+            console.log(response);
+            return response.data;
+        }
+    },[id])
     
     setInitialState(formFields, userData);
 
