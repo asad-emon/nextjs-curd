@@ -10,7 +10,6 @@ export default function Create() {
 
   const handleFormSubmit = async (e) => {
     const response = await api.postUser(e);
-    console.log(response)
   };
 
   return (

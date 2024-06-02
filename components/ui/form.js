@@ -17,7 +17,7 @@ export function Form({ children, title, formFields, handleFormSubmit }) {
     return (
         <>
             <div className="mx-auto w-full max-w-sm sm:max-w-full p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
-                <form className="flex flex-col justify-center space-y-6" onSubmit={handleSubmit}>
+                <form className="flex flex-col justify-center space-y-6" onSubmit={handleSubmit} autoComplete="off">
                     <h5 className="text-xl font-medium text-gray-900 dark:text-white">{title}</h5>
                     <div className="md:columns-2">
                         {formFields.map((field, index) => (
