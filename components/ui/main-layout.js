@@ -2,6 +2,7 @@
 import { Header } from "./header"
 import { Navigation } from "./navigation"
 import { ErrorBoundary } from "next/dist/client/components/error-boundary";
+import Error from "../../app/error";
 
 export function MainLayout ({children}) {
     return (

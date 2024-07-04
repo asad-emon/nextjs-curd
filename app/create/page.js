@@ -9,9 +9,13 @@ export default function Create() {
   const router = useRouter();
 
   setInitialState(formFields, {activeStatus: false});
-
+  
   const handleFormSubmit = async (e) => {
     const response = await api.postUser(e);
+    if (response.status == 200) {
+      setInitialState(formFields, {activeStatus: false});
+      alert('User created');
+    } 
   };
 
   return (

@@ -11,6 +11,9 @@
   :root {
     --foreground-rgb: 255, 255, 255;
     --background-rgb: 0, 0, 0;
+    --ck-color-base-text: inherit !important;
+    --ck-color-base-background: inherit !important;
+    --ck-color-button-default-hover-background: rgba(37, 99, 235) !important;
   }
 }
 

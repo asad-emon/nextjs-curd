@@ -1,13 +1,17 @@
 import React, { useEffect, useRef } from "react";
+import './custom.css';
+
 export default function CKeditor({ onChange, editorLoaded, name, value }) {
     const editorRef = useRef();
     const { CKEditor, ClassicEditor } = editorRef.current || {};
-useEffect(() => {
-    editorRef.current = {
-         CKEditor: require("@ckeditor/ckeditor5-react").CKEditor, 
-         ClassicEditor: require("@ckeditor/ckeditor5-build-classic")
-    };
-}, []);
+
+    useEffect(() => {
+        editorRef.current = {
+            CKEditor: require("@ckeditor/ckeditor5-react").CKEditor, 
+            ClassicEditor: require("@ckeditor/ckeditor5-build-classic")
+        };
+    }, []);
+    
     return (
         <>
             {editorLoaded ? (

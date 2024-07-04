@@ -48,7 +48,7 @@ export function Input({ label, type, name, required, placeholder, value, onChang
                         </aside>
                         <div {...getRootProps({className: 'dark:bg-gray-700 dropzone'})}>
                             <input {...getInputProps()} />
-                            {files.length < 1 ? (<p className='text-center'>Drag 'n' drop some files here, or click to select files</p>) : (<ul>{files}</ul>)}
+                            {files.length < 1 ? (<p className='text-center'>Drag and drop some files here, or click to select files</p>) : (<ul>{files}</ul>)}
                         </div>
                     </section>
             ) : type === 'richtext'? (
