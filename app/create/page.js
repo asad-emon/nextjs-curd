@@ -1,14 +1,21 @@
 "use client"
 import { Form } from "@/components/ui/form";
-import { setInitialState } from "@/reducers/form";
+import { setInitialState } from "@/reducers/form-reducer";
 import { createFormFields as formFields } from "@/constants/form-fields";
+import api from '@/lib/api-client';
+import { useRouter } from 'next/navigation'
 
 export default function Create() {
+  const router = useRouter();
 
-  setInitialState(formFields);
-
-  const handleFormSubmit = (e) => {
-    console.log(e)
+  setInitialState(formFields, {activeStatus: false});
+  
+  const handleFormSubmit = async (e) => {
+    const response = await api.postUser(e);
+    if (response.status == 200) {
+      setInitialState(formFields, {activeStatus: false});
+      alert('User created');
+    } 
   };
 
   return (

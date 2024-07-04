@@ -46,9 +46,9 @@ export function Input({ label, type, name, required, placeholder, value, onChang
                         <aside className="mb-2">
                         <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{label}</label>
                         </aside>
-                        <div {...getRootProps({className: 'dropzone'})}>
+                        <div {...getRootProps({className: 'dark:bg-gray-700 dropzone'})}>
                             <input {...getInputProps()} />
-                            {files.length < 1 ? (<p className='text-center'>Drag 'n' drop some files here, or click to select files</p>) : (<ul>{files}</ul>)}
+                            {files.length < 1 ? (<p className='text-center'>Drag and drop some files here, or click to select files</p>) : (<ul>{files}</ul>)}
                         </div>
                     </section>
             ) : type === 'richtext'? (

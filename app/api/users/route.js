@@ -7,10 +7,10 @@ export async function POST(request) {
         const { data } = await request.json();
         await dbConnection();
         await User.create(data);
-        return NextResponse.json({message:"User created"});
+        return NextResponse.json({status: 200, message:"User created"});
     }
     catch(ex){
-        return NextResponse.json({ error: ex });
+        return NextResponse.json({ error: ex, message:"Failed to create user!"});
     }
   }
 
@@ -18,10 +18,10 @@ export async function POST(request) {
     try {
         await dbConnection();
         const users = await User.find();
-        return NextResponse.json({ data : users });
+        return NextResponse.json({ status:"ok", message:"Users found!", data: users });
     }
     catch(ex) {
-        return NextResponse.json({ error: ex });
+        return NextResponse.json({ error: ex, message:"Users not found!" });
     }
   }
 
@@ -31,9 +31,9 @@ export async function POST(request) {
         const id = searchParams.get('id');
         await dbConnection();
         await User.findByIdAndDelete(id);
-        return NextResponse.json({ message : "User deleted" });
+        return NextResponse.json({ status: 200, message : "User deleted" });
     }
     catch(ex) {
-        return NextResponse.json({ error: ex });
+        return NextResponse.json({ error: ex, message : "Something went wrong!" });
     }
   }
