@@ -2,7 +2,7 @@
 import { UserCard } from "@/components/ui/user-card";
 import { useState } from "react";
 
-export function UserList ({users}) {
+export function UserList({ users }) {
     const [userList, setUserList] = useState(users);
 
     const deleteUser = (userId) => {
@@ -10,16 +10,16 @@ export function UserList ({users}) {
     };
 
     return (
-        <ul className="bg-white rounded-lg shadow overflow-hidden dark:bg-gray-800 dark:border-gray-700">
-          {userList?.map((user, index)=>
-            <div key={index}>
-                <UserCard
-                    user={user}
-                    onDeleteUser={deleteUser}
-                >
-                </UserCard>
-            </div>
-          )}
-        </ul>
-    ) 
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {userList?.map((user, index) =>
+                <div key={index}>
+                    <UserCard
+                        user={user}
+                        onDeleteUser={deleteUser}
+                    >
+                    </UserCard>
+                </div>
+            )}
+        </div>
+    )
 }
