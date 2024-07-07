@@ -6,13 +6,17 @@ import { useState, useEffect } from "react";
 export default function Home() {
   const [users, setUsers] = useState([]);
   useEffect(() => {
-    api.getAllUsers().then((response) => {
-      const { data } = response;
-      setUsers(data);
-    });
+    api.getAllUsers()
+      .then((response) => {
+        const { data } = response;
+        setUsers(data);
+      })
+      .catch((error) => {
+        
+      });
   }, [])
   return (
-    (users.length > 0) &&
+    (users?.length > 0) &&
     <UserList users={users} />
   );
 }
