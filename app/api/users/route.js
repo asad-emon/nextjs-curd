@@ -1,6 +1,7 @@
 import dbConnection from "@/lib/mongodb"
 import User from "@/model/User";
 import { NextResponse } from "next/server"
+import users from "../../../constants/users.json"
 
 export async function POST(request) {
     try {
@@ -17,7 +18,7 @@ export async function POST(request) {
   export async function GET() {
     try {
         await dbConnection();
-        const users = await User.find();
+        // const users = await User.find();
         return NextResponse.json({ status:"ok", message:"Users found!", data: users });
     }
     catch(ex) {
