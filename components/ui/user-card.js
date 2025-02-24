@@ -4,12 +4,12 @@ import { dateToYMD } from "@/lib/helper"
 import useOutsideClick from "@/hooks/useOutsideClick"
 import api from "@/lib/api-client"
 import { useMemo, useState, useRef } from "react"
-import { useRouter } from 'next/navigation'
+import { useNamedRoute } from "@/hooks/useNamedRoute"
 import { useGlobalContext } from "@/contexts/global-context"
 
 export function UserCard({ user, onDeleteUser }) {
+    const namedRoute = useNamedRoute();
     const { showAlert } = useGlobalContext();
-    const router = useRouter();
     const userData = useMemo(() => {
         return user;
     }, []);
@@ -20,13 +20,13 @@ export function UserCard({ user, onDeleteUser }) {
             const response = await api.deleteUserById(userId);
             if (response.status == 200) {
                 onDeleteUser(userId);
+                showAlert(response.message);
             }
-            alert(response.message);
         }
     }
 
     function onClickEdit(userId) {
-        router.push(`/edit/${userId}`);
+        namedRoute('userProfileEdit', { userId });
     }
 
     return (
