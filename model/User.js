@@ -2,6 +2,9 @@ import mongoose, { Schema } from 'mongoose';
 
 const dataObject = {
     username: String,
+    email: String,
+    provider: String,
+    providerAccountId: String,
     profilePicture: String,
     phoneNumber: String,
     birthdate: Date,

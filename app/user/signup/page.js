@@ -4,8 +4,10 @@ import { createFormFields as formFields } from "@/constants/form-fields";
 import api from '@/lib/api-client';
 import { useRouter } from 'next/navigation'
 import { FormProvider, setInitialState } from "@/contexts/form-context";
+import { useGlobalContext } from "@/contexts/global-context";
 
 export default function Create() {
+  const { showAlert } = useGlobalContext();
   const router = useRouter();
 
   setInitialState(formFields, { activeStatus: false });
@@ -16,7 +18,7 @@ export default function Create() {
     const response = await api.postUser(e);
     if (response.status == 200) {
       setInitialState(formFields, { activeStatus: false });
-      alert('User created');
+      showAlert('User created');
     }
   };
 
