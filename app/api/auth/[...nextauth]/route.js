@@ -3,6 +3,8 @@ import GithubProvider from "next-auth/providers/github"
 import dbConnection from "@/lib/mongodb";
 import User from "@/model/User";
 
+const baseUrl = process.env.NEXTAUTH_URL || "http://localhost:3000"
+
 export const authOptions = {
   providers: [
     GithubProvider({
@@ -11,20 +13,21 @@ export const authOptions = {
     }),
   ],
   callbacks: {
-    async signIn({ user, account, profile, email, credentials }) {
-      if (await checkExistingUser(account)) {
-        console.log("USER found!!!");
-        return true;
-      }
-      else {
-        handleSignUp(user, account).then(user => {
-          console.log('Created User:', user);
+    async signIn({ user, account }) {
+      try {
+        if (await checkExistingUser(account)) {
+          console.log("USER found!!!");
           return true;
-        }).catch(error => {
-          console.error('Error:', error);
-        });
+        }
+
+        // Wait for handleSignUp to complete before returning true
+        const newUser = await handleSignUp(user, account);
+        console.log('Created User:', newUser);
+        return true;
+      } catch (error) {
+        console.error('Error:', error);
+        return false; // Returning false will reject the sign-in attempt
       }
-      return '/';
     }
   }
 };
