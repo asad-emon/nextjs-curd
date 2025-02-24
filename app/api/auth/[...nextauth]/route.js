@@ -28,6 +28,9 @@ export const authOptions = {
         console.error('Error:', error);
         return false; // Returning false will reject the sign-in attempt
       }
+    },
+    async redirect({ url, baseUrl }) {
+      return baseUrl; // Ensures it always redirects correctly
     }
   }
 };
