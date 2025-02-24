@@ -1,6 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { MainLayout } from "@/components/ui/main-layout";
+import { MainLayout } from "@/components/layout/main-layout";
 import GlobalContextProvider from "@/contexts/global-context";
 import Alert from "@/components/plugin/alert";
 

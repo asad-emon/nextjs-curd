@@ -2,7 +2,7 @@ import Link from "next/link";
 import { usePathname } from 'next/navigation'
 
 export function Header() {
-    let title = "Next.js CURD Application";
+    let title = "nextfolio";
     const pathname = usePathname();
     
     if (pathname == "/create") {
@@ -13,8 +13,8 @@ export function Header() {
     }
 
     return (
-        <header className="">
-            <Link href="/" className="text-center text-2xl">
+        <header className="text-center sm:text-left">
+            <Link href="/" className="text-lg sm:text-xl lg:text-2xl">
                 {title}
             </Link>
         </header>

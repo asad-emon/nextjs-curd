@@ -16,7 +16,7 @@ const Alert = () => {
     }
     useEffect(() => {
         if (alert.open) {
-            setTimeout(() => { closeAlert() }, 5000);
+            let timeout = setTimeout(() => { closeAlert() }, 5000);
         }
     }, [alert]);
     return (
