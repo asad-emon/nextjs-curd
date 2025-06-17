@@ -1,8 +1,8 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { MainLayout } from "@/components/ui/main-layout";
-import { FormProvider } from "@/contexts/form-context";
-import reducer, { initialState } from "@/reducers/form-reducer";
+import { MainLayout } from "@/components/layout/main-layout";
+import GlobalContextProvider from "@/contexts/global-context";
+import Alert from "@/components/plugin/alert";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,11 +15,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <FormProvider initialState={initialState} reducer={reducer}>
+        <GlobalContextProvider>
+          <Alert />
           <MainLayout>
-              {children}
+            {children}
           </MainLayout>
-        </FormProvider>
+        </GlobalContextProvider>
       </body>
     </html>
   );

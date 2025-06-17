@@ -7,7 +7,7 @@ import Error from "../../app/error";
 export function MainLayout ({children}) {
     return (
         <main>
-            <div className="bg-gray-50 dark:bg-gray-700 flex justify-between lg:px-36 px-10 py-5">
+            <div className="bg-gray-50 dark:bg-gray-700 flex flex-col gap-5 sm:grid sm:grid-cols-2 justify-between lg:px-36 px-10 py-5">
                 <Header/>
                 <Navigation/>
             </div>

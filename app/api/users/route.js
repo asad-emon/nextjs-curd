@@ -1,6 +1,7 @@
 import dbConnection from "@/lib/mongodb"
 import User from "@/model/User";
 import { NextResponse } from "next/server"
+// import users from "../../../constants/users.json"
 
 export async function POST(request) {
     try {
